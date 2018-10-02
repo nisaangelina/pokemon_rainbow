@@ -1,0 +1,1 @@
+//= require vendor/bootstrap4/js/bootstrap
