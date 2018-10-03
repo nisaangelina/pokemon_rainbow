@@ -37,7 +37,7 @@ class PokemonsController < ApplicationController
 
   def update
     @pokemon = ::Pokemon.find(params[:id])
-    if @pokemon.update(skill_params)
+    if @pokemon.update(pokemonedit_params)
       flash[:success] = "Pokemon '#{@pokemon.name}' Updated!"
       redirect_to pokemons_path
     else
@@ -53,5 +53,9 @@ class PokemonsController < ApplicationController
 
   def pokemon_params
   params.require(:pokemon).permit(:name, :pokedex_id)
+ end
+
+ def pokemonedit_params
+  params.require(:pokemon).permit(:name, :attack, :speed, :defence, :current_health_point, )
  end
 end

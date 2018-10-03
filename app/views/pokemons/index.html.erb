@@ -9,6 +9,7 @@
         <th scope="col">Element Type</th>
         <th scope="col">Attack</th>
         <th scope="col">Health</th>
+        <th scope="col">Image</th>
         <th scope="col">Action</th>
       </tr>
     </thead>
@@ -16,9 +17,10 @@
     <% @pokemons.each do |poke|%>
       <tr>
         <td><%= poke.name%></td>
-        <td><%= poke.pokedex.element_type %></td>
+        <td><%= poke.pokedex_element %></td>
         <td><%= poke.attack%></td>
         <td><%= poke.current_health_point%></td>
+         <td width="25%"><%= image_tag poke.pokedex_image, width:'50' %></td>
         <td width="20%">
           <center>
             <%=link_to 'Show', pokemon_path(poke), class: 'btn btn-success'%>

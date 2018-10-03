@@ -15,7 +15,4 @@ class Pokedex < ApplicationRecord
    validates :image_url, presence: true
    validates :element_type, inclusion: { in: ELEMENT }
 
-   def element_type
-    self.element_type
-   end
 end
