@@ -9,12 +9,15 @@ class PokemonsController < ApplicationController
 
   def new
     @pokemon = ::Pokemon.new
-    @elements = ::Pokedex::ELEMENT
   end
 
   def create
     pokemonpokedex = Pokedex.find_by(id: params[:pokemon][:pokedex_id])
-    # if pokemonopokedex = !nil
+    if pokemonpokedex.nil?
+      @pokemon = ::Pokemon.new
+      flash.now[:danger] = "No Pokedex is found"
+      render 'new'
+    else
     @pokemon = ::Pokemon.new(pokemon_params)
     @pokemon.max_health_point = pokemonpokedex.base_health_point
     @pokemon.attack = pokemonpokedex.base_attack
@@ -23,12 +26,12 @@ class PokemonsController < ApplicationController
     @pokemon.current_experience = 0
     @pokemon.level = 1
     @pokemon.current_health_point = pokemonpokedex.base_health_point
-    # @pokemon.element_type = pokemonpokedex.element_type
-     if @pokemon.save
-      flash[:success] = "Pokemon '#{@pokemon.name}' Added!"
-      redirect_to pokemons_path
-    else
-      render 'new'
+       if @pokemon.save
+        flash[:success] = "Pokemon '#{@pokemon.name}' Added!"
+        redirect_to pokemons_path
+      else
+        render 'new'
+      end
     end
   end
 

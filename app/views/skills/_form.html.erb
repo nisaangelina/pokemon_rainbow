@@ -1,11 +1,9 @@
 <div class="card">
   <div class="card-body">
     <%= form_for @skill do |f| %>
-      <ul>
-        <p style="color:  #A52A2A"><% @skill.errors.full_messages.each do |error| %> </p>
-          <li><p style="color:  #A52A2A"><%= error %></p></li>
+    <% @skill.errors.full_messages.each do |error| %>
+     <div class="alert alert-danger" role="alert"><%= error %></div>
         <% end %>
-      </ul>
       <div class="form-group">
         <div class="row">
           <div class="col-3"><p style="font-variant: small-caps; font-size: 20px"><%= f.label :'Name:' %></p></div>
@@ -35,6 +33,6 @@
         <div class="row">
           <div class="col-3"><%= f.submit 'Submit', class: "btn btn-primary" %></div>
       </div>
+    </div>
     <% end %>
-  </div>
 </div>
