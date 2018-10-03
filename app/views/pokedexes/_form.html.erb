@@ -1,0 +1,61 @@
+<div class="card">
+  <div class="card-body">
+    <!-- <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+    <%= form_for @pokedex do |f| %>
+      <ul>
+        <% @pokedex.errors.full_messages.each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+      </ul>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-3"><p style="font-variant: small-caps; font-size: 20px"><%= f.label :'Name:' %></p></div>
+          <div class="col-9"><%= f.text_field :name, class: "form-control" %></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-3"><p style="font-variant: small-caps; font-size: 20px"><%= f.label :'Element Type:' %></p></div>
+          <div class="col-9">
+            <%= f.select :element_type, [ "Normal", "Fire", "Fighting", "Water", "Flying", "Grass", "Poison", "Electric", "Ground", "Psychic", "Rock", "Ice", "Bug", "Dragon", "Ghost", "Dark", "Steel", "Fairy" ], {} , class: "form-control" %>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-3"><p style="font-variant: small-caps; font-size: 20px"><%= f.label :'Base Health:' %></p></div>
+          <div class="col-9"><%= f.number_field :base_health_point, class: "form-control", step: 1 %></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-3"><p style="font-variant: small-caps; font-size: 20px"><%= f.label :'Base Attack:' %></p></div>
+          <div class="col-9"><%= f.number_field :base_attack, class: "form-control", step: 1 %></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-3"><p style="font-variant: small-caps; font-size: 20px"><%= f.label :'Base Defence:' %></p></div>
+          <div class="col-9"><%= f.number_field :base_defence, class: "form-control", step: 1 %></div>
+        </div>
+      </div>
+       <div class="form-group">
+        <div class="row">
+          <div class="col-3"><p style="font-variant: small-caps; font-size: 20px"><%= f.label :'Base Speed:' %></p></div>
+          <div class="col-9"><%= f.number_field :base_speed, class: "form-control", step: 1 %></div>
+        </div>
+      </div>
+       <div class="form-group">
+        <div class="row">
+          <div class="col-3"><p style="font-variant: small-caps; font-size: 20px"><%= f.label :'Image URL:' %></p></div>
+          <div class="col-9"><%= f.text_field :image_url, class: "form-control" %></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-3"><%= f.submit 'Submit', class: "btn btn-primary" %></div>
+      </div>
+    <% end %>
+  </div>
+</div>

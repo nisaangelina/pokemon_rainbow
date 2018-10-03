@@ -1,0 +1,42 @@
+<div style="margin: 1em">
+  <div class="card">
+    <div class="card-header">
+      <h4 style="font-weight: bold;"><center><%= @pokedexes.name %></center></h4>
+    </div>
+    <div class="card-body">
+      <center>
+      <h5 class="card-title">Element Type: <%= @pokedexes.element_type %></h5></center>
+        <table width="100%">
+          <tr>
+            <td width="50%">
+              <div class ="col-lg-5" style="align-content: center; float: right;">
+                <ul class="list-group">
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Base Health
+                    <span class="badge badge-primary badge-pill"><%= @pokedexes.base_health_point %></span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Base Attack
+                    <span class="badge badge-primary badge-pill"><%= @pokedexes.base_attack %></span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Base Defence
+                    <span class="badge badge-primary badge-pill"><%= @pokedexes.base_defence %></span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Base Speed
+                    <span class="badge badge-primary badge-pill"><%= @pokedexes.base_speed %></span>
+                  </li>
+                </ul>
+              </div>
+            </td>
+            <td width="50%">
+          <div class ="col-lg-3" style="align-content: center; float: left;">
+           <%= image_tag @pokedexes.image_url ,width: '300' %>
+          </div>
+        </td>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
