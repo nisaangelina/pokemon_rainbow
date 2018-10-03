@@ -35,6 +35,12 @@
         </div>
       </td>
       </table>
+      <div class="fluid" style="width: 80%">
+        <center>
+          <%=link_to 'Edit', edit_pokedex_path(@pokedexes), class: 'btn btn-warning'%>
+          <%= link_to "Delete", @pokedexes, class: 'btn btn-danger', method: :delete, data: {confirm: "Really delete the pokedex?"}%>
+        </center>
+      </div>
     </div>
   </div>
 </div>

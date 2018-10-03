@@ -1,5 +1,8 @@
 class Pokedex < ApplicationRecord
+  extend Enumerize
+
   ELEMENT = [ "Normal", "Fire", "Fighting", "Water", "Flying", "Grass", "Poison", "Electric", "Ground", "Psychic", "Rock", "Ice", "Bug", "Dragon", "Ghost", "Dark", "Steel", "Fairy" ]
+  enumerize :element_type, in:ELEMENT
 
    validates :name, presence: true, length: { maximum: 50 }, uniqueness: { case_sensitive: false }
    validates :base_health_point, presence: true, length: { maximum: 5 }
