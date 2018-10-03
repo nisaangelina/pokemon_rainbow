@@ -1,0 +1,37 @@
+<h1>Pokémon</h1>
+<span style="float: right; margin-bottom: 1em">
+  <%=link_to 'Add Pokemon', new_pokemon_path, class: 'btn btn-primary'%>
+</span>
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Element Type</th>
+        <th scope="col">Attack</th>
+        <th scope="col">Health</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @pokemons.each do |poke|%>
+      <tr>
+        <td><%= poke.name%></td>
+        <td><%= poke.pokedex.element_type %></td>
+        <td><%= poke.attack%></td>
+        <td><%= poke.current_health_point%></td>
+        <td width="20%">
+          <center>
+            <%=link_to 'Show', pokemon_path(poke), class: 'btn btn-success'%>
+            <%=link_to 'Edit', edit_pokemon_path(poke), class: 'btn btn-warning'%>
+            <%= link_to "Delete", poke, class: 'btn btn-danger', method: :delete, data: {confirm: "Really delete the pokemon?"}%>
+          </center>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<div class="clearfix">
+  <div style="float: right;">
+    <%= will_paginate @pokemons, pokedex: %w(pagination justify-content-end ) %>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<div class="card">
+  <div class="card-body">
+    <%= form_for @pokemon do |f| %>
+      <ul>
+        <p style="color:  #A52A2A"><% @pokemon.errors.full_messages.each do |error| %> </p>
+          <li><p style="color:  #A52A2A"><%= error %></p></li>
+        <% end %>
+      </ul>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-3"><p style="font-variant: small-caps; font-size: 20px"><%= f.label :'Pokedex:' %></p></div>
+          <div class="col-9">
+            <%= f.collection_select(:pokedex_id, Pokedex.all, :id, :name , {},{:class => 'form-control form-group'} )  %>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-3"><p style="font-variant: small-caps; font-size: 20px"><%= f.label :'Name:' %></p></div>
+          <div class="col-9"><%= f.text_field :name, class: "form-control" %></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-3"><%= f.submit 'Submit', class: "btn btn-primary" %></div>
+      </div>
+    <% end %>
+  </div>
+</div>

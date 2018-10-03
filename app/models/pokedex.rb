@@ -1,5 +1,7 @@
 class Pokedex < ApplicationRecord
   extend Enumerize
+  has_many :pokemons, dependent: :destroy
+
 
   ELEMENT = [ "Normal", "Fire", "Fighting", "Water", "Flying", "Grass", "Poison", "Electric", "Ground", "Psychic", "Rock", "Ice", "Bug", "Dragon", "Ghost", "Dark", "Steel", "Fairy" ]
   enumerize :element_type, in:ELEMENT
@@ -12,4 +14,8 @@ class Pokedex < ApplicationRecord
    validates :element_type, presence: true, length: { maximum: 20 }
    validates :image_url, presence: true
    validates :element_type, inclusion: { in: ELEMENT }
+
+   def element_type
+    self.element_type
+   end
 end
