@@ -13,7 +13,8 @@ class PokemonsController < ApplicationController
   end
 
   def create
-    pokemonpokedex = Pokedex.find(params[:pokemon][:pokedex_id])
+    pokemonpokedex = Pokedex.find_by(id: params[:pokemon][:pokedex_id])
+    # if pokemonopokedex = !nil
     @pokemon = ::Pokemon.new(pokemon_params)
     @pokemon.max_health_point = pokemonpokedex.base_health_point
     @pokemon.attack = pokemonpokedex.base_attack

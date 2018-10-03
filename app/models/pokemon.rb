@@ -1,7 +1,7 @@
 class Pokemon < ApplicationRecord
   belongs_to :pokedex
 
-  validates :name, presence: true, length: { maximum: 50 }
+  validates :name, presence: true, length: { maximum: 50 }, uniqueness: { case_sensitive: false }
   validates :attack, presence: true, numericality: { only_integer: true }
   validates :defence, presence: true, numericality: { only_integer: true }
   validates :speed, presence: true ,numericality: { only_integer: true }

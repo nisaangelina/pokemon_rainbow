@@ -10,7 +10,7 @@
         <div class="row">
           <div class="col-3"><p style="font-variant: small-caps; font-size: 20px"><%= f.label :'Pokedex:' %></p></div>
           <div class="col-9">
-            <%= f.collection_select(:pokedex_id, Pokedex.all, :id, :name,{ :disabled => true},{:class => 'form-control form-group'})  %>
+            <%= f.collection_select(:pokedex_id, Pokedex.all, :id, :name,{ },{:class => 'form-control form-group',:disabled => true})  %>
           </div>
         </div>
       </div>
