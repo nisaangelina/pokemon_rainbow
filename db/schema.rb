@@ -16,13 +16,13 @@ ActiveRecord::Schema.define(version: 2018_10_02_045304) do
   enable_extension "plpgsql"
 
   create_table "pokedexes", force: :cascade do |t|
-    t.string "name"
-    t.integer "base_health_point"
-    t.string "base_attack"
-    t.integer "base_defence"
-    t.integer "base_speed"
-    t.string "element_type"
-    t.string "image_url"
+    t.string "name", null: false
+    t.integer "base_health_point", null: false
+    t.string "base_attack", null: false
+    t.integer "base_defence", null: false
+    t.integer "base_speed", null: false
+    t.string "element_type", null: false
+    t.string "image_url", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
