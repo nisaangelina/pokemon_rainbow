@@ -1,0 +1,41 @@
+<div class="card">
+  <div class="card-body">
+    <%= form_for @skill do |f| %>
+      <ul>
+        <p style="color:  #A52A2A"><% @skill.errors.full_messages.each do |error| %> </p>
+          <li><p style="color:  #A52A2A"><%= error %></p></li>
+        <% end %>
+      </ul>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-3"><p style="font-variant: small-caps; font-size: 20px"><%= f.label :'Name:' %></p></div>
+          <div class="col-9"><%= f.text_field :name, class: "form-control" %></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-3"><p style="font-variant: small-caps; font-size: 20px"><%= f.label :'Element Type:' %></p></div>
+          <div class="col-9">
+            <%= f.select :element_type, Pokedex.element_type.options, {}, {class: 'form-control form-group'} %>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-3"><p style="font-variant: small-caps; font-size: 20px"><%= f.label :'Power:' %></p></div>
+          <div class="col-9"><%= f.number_field :power,class: "form-control", step: 1,  min: '1' %></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-3"><p style="font-variant: small-caps; font-size: 20px"><%= f.label :'Max Power Point (PP):' %></p></div>
+          <div class="col-9"><%= f.number_field :max_pp, class: "form-control", step: 1, min: '1' %></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-3"><%= f.submit 'Submit', class: "btn btn-primary" %></div>
+      </div>
+    <% end %>
+  </div>
+</div>
