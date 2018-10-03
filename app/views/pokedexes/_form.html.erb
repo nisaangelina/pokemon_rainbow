@@ -1,11 +1,9 @@
 <div class="card">
   <div class="card-body">
-    <!-- <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
     <%= form_for @pokedex do |f| %>
       <ul>
-        <% @pokedex.errors.full_messages.each do |error| %>
-          <li><%= error %></li>
+        <p style="color:  #A52A2A"><% @pokedex.errors.full_messages.each do |error| %> </p>
+          <li><p style="color:  #A52A2A"><%= error %></p></li>
         <% end %>
       </ul>
       <div class="form-group">

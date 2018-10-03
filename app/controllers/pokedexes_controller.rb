@@ -1,6 +1,8 @@
 class PokedexesController < ApplicationController
   def index
-    @pokedexes = ::Pokedex.all
+    # @pokedexes = ::Pokedex.all
+      @pokedexes = ::Pokedex.paginate(:page => params[:page], :per_page => 5)
+
   end
 
   def show
@@ -9,12 +11,12 @@ class PokedexesController < ApplicationController
 
   def new
     @pokedex = ::Pokedex.new
+    @elements = ::Pokedex::ELEMENT
   end
 
   def create
     @pokedex = ::Pokedex.new(pokedex_params)
      if @pokedex.save
-
       flash[:success] = "Pokedex '#{@pokedex.name}' Added!"
       redirect_to pokedexes_path
     else
