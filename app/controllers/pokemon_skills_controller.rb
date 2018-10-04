@@ -8,9 +8,11 @@ class PokemonSkillsController < ApplicationController
   @pokemonskill.pokemon_id = @pokemon.id
   @pokemonskill.current_pp = pokemonpp.max_pp
    if @pokemonskill.save
+    flash[:success] = "Attack added!"
     redirect_to pokemon_path(@pokemon)
     else
-      render 'show'
+    flash[:danger] = "Error Input attack!"
+    redirect_to pokemon_path(@pokemon)
     end
   end
 
