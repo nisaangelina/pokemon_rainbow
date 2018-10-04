@@ -3,5 +3,7 @@ Rails.application.routes.draw do
  root 'welcomes#index'
  resources :pokedexes
  resources :skills
- resources :pokemons
+ resources :pokemons do
+  resources :pokemon_skills , only: [:create, :destroy]
+ end
 end

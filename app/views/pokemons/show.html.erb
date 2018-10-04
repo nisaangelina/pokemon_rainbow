@@ -1,13 +1,13 @@
 <div class="card">
   <div class="card-header">
-    <h4 style="font-weight: bold;"><center><%= @pokemons.name %></center></h4>
+    <h4 style="font-weight: bold;"><center><%= @pokemon.name %></center></h4>
   </div>
   <div class="card-body">
     <div class="fluid" style="width: 80%">
         <center>
-          <%=link_to 'Heal', edit_pokemon_path(@pokemons), class: 'btn btn-success'%>
-          <%=link_to 'Edit', edit_pokemon_path(@pokemons), class: 'btn btn-warning'%>
-          <%= link_to "Delete", @pokemons, class: 'btn btn-danger', method: :delete, data: {confirm: "Really delete the pokedex?"}%>
+          <%=link_to 'Heal', edit_pokemon_path(@pokemon), class: 'btn btn-success'%>
+          <%=link_to 'Edit', edit_pokemon_path(@pokemon), class: 'btn btn-warning'%>
+          <%= link_to "Delete", @pokemon, class: 'btn btn-danger', method: :delete, data: {confirm: "Really delete the pokedex?"}%>
         </center>
       </div>
       <br>
@@ -16,7 +16,7 @@
         <tr>
           <td width="50%">
             <div class ="col-lg-5" style="align-content: center; float: right;">
-            <%= image_tag @pokemons.pokedex_image ,width: '300' %>
+            <%= image_tag @pokemon.pokedex_image ,width: '300' %>
             </div>
           </td>
           <td width="50%">
@@ -24,31 +24,31 @@
               <ul class="list-group">
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                   Element Type
-                  <span class="badge badge-primary badge-pill"><%= @pokemons.pokedex_element %></span>
+                  <span class="badge badge-primary badge-pill"><%= @pokemon.pokedex_element %></span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                   Current Health
-                  <span class="badge badge-primary badge-pill"><%= @pokemons.current_health_point %></span>
+                  <span class="badge badge-primary badge-pill"><%= @pokemon.current_health_point %></span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                   Attack Power
-                  <span class="badge badge-primary badge-pill"><%= @pokemons.attack %></span>
+                  <span class="badge badge-primary badge-pill"><%= @pokemon.attack %></span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                   Defence
-                  <span class="badge badge-primary badge-pill"><%= @pokemons.defence %></span>
+                  <span class="badge badge-primary badge-pill"><%= @pokemon.defence %></span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                   Speed
-                  <span class="badge badge-primary badge-pill"><%= @pokemons.speed %></span>
+                  <span class="badge badge-primary badge-pill"><%= @pokemon.speed %></span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                   Level
-                  <span class="badge badge-primary badge-pill"><%= @pokemons.level %></span>
+                  <span class="badge badge-primary badge-pill"><%= @pokemon.level %></span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                   Experience
-                  <span class="badge badge-primary badge-pill"><%= @pokemons.current_experience %></span>
+                  <span class="badge badge-primary badge-pill"><%= @pokemon.current_experience %></span>
                 </li>
               </ul>
             </div>
@@ -57,33 +57,47 @@
     </div>
     <div style="margin: 1em">
       <hr>
-      <h5 class="card-title">List of Attacks</h5></center>
+      <h4 style="font-weight: bold;">List of Attacks</h4>
+
+
+
       <table class="table table-hover">
-    <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Power</th>
-      <th scope="col">Max PP</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Absorb</td>
-      <td>20</td>
-      <td>25</td>
-    </tr>
-    <tr>
-      <td>Vine Whip</td>
-      <td>45</td>
-      <td>25</td>
-    </tr>
-    <tr>
-      <td>Trop KIck</td>
-      <td>15</td>
-      <td>70</td>
-    </tr>
-  </tbody>
-</table>
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Power</th>
+            <th scope="col">Current PP</th>
+            <th scope="col">Action</th>
+          </tr>
+      </thead>
+      <tbody>
+        <% @pokemon.pokemon_skills.each do |pk_skill| %>
+          <tr>
+            <td><%= pk_skill.getname %></td>
+            <td><%= pk_skill.getpower %></td>
+            <td><%= pk_skill.current_pp %></td>
+            <td><%= button_to "Delete", [@pokemon, pk_skill], class: 'btn btn-danger', method: :delete, data: {confirm: "Really delete the skill?"}%></td>
+          </tr>
+          <%end%>
+        </tbody>
+      </tbody>
+    </table>
+    <div class="container-fluid" style="">
+    <button onclick="myFunction()" class="btn btn-light">Add Attack</button>
     </div>
+     <br>
+      <div id="addAttack">
+       <div class="form-group">
+        <div class="row">
+          <div class="col-9">
+            <%= form_for [@pokemon, @pokemonskill] do |f| %>
+            <div class="col-lg-5"><%= f.collection_select(:skill_id, Skill.all, :id, :name,{ },{:class => 'form-control form-group'})%></div>
+            <div class="col-lg-5" style="float: right; "><%= f.submit 'Submit', class: "btn btn-primary" %></div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+   </div>
   </div>
 </div>
+

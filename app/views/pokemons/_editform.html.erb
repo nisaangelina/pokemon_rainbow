@@ -1,66 +1,71 @@
 <div class="card">
   <div class="card-body">
     <%= form_for @pokemon do |f| %>
-     <% @pokemon.errors.full_messages.each do |error| %> </p>
+     <% @pokemon.errors.full_messages.each do |error| %> s
           <div class="alert alert-danger" role="alert"><%= error %>
           </div>
         <% end %>
-      <div style="margin: 1em">
-       <div class="form-group">
-        <div class="row">
-          <div class="col-3"><p style="font-variant: small-caps; font-size: 20px"><%= f.label :'Pokedex:' %></p></div>
-          <div class="col-9">
-            <%= f.collection_select(:pokedex_id, Pokedex.all, :id, :name,{ },{:class => 'form-control form-group',:disabled => true})  %>
+      <div style="margin: 1em" class="row">
+        <div class="col-5" style="margin-top: 150px">
+          <div style="float: right;"><%= image_tag @pokemon.pokedex_image, width:'300' %></div>
+        </div>
+          <div class="col-5" style="float: left;">
+             <div class="form-group">
+              <div class="row">
+                <div class="col-3"><p style="font-variant: small-caps; font-size: 20px"><%= f.label :'Pokedex:' %></p></div>
+                <div class="col-9">
+                  <%= f.collection_select(:pokedex_id, Pokedex.all, :id, :name,{ },{:class => 'form-control form-group',:disabled => true})  %>
+                </div>
+              </div>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-3"><p style="font-variant: small-caps; font-size: 20px"><%= f.label :'Name:' %></p></div>
+                  <div class="col-9"><%= f.text_field :name, class: "form-control" %></div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-3"><p style="font-variant: small-caps; font-size: 20px"><%= f.label :'Experience:' %></p></div>
+                  <div class="col-9"><%= f.number_field :current_experience, class: "form-control", :disabled => true %></div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-3"><p style="font-variant: small-caps; font-size: 20px"><%= f.label :'Level:' %></p></div>
+                  <div class="col-9"><%= f.number_field :level, class: "form-control" ,:disabled => true %></div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-3"><p style="font-variant: small-caps; font-size: 20px"><%= f.label :'Attack:' %></p></div>
+                  <div class="col-9"><%= f.number_field :attack, class: "form-control" , step: 1, min: '1' %></div>
+                </div>
+              </div>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-3"><p style="font-variant: small-caps; font-size: 20px"><%= f.label :'Defence:' %></p></div>
+                <div class="col-9"><%= f.number_field :defence, class: "form-control", step: 1, min: '1' %></div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-3"><p style="font-variant: small-caps; font-size: 20px"><%= f.label :'Speed:' %></p></div>
+                <div class="col-9"><%= f.number_field :speed, class: "form-control", step: 1, min: '1' %></div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-3"><p style="font-variant: small-caps; font-size: 20px"><%= f.label :'Health:' %></p></div>
+                <div class="col-9"><%= f.number_field:current_health_point, class: "form-control" , step: 1%></div>
+              </div>
+            </div>
+              <div class="form-group" style="float: right;">
+                <div class="row">
+                  <div class="col-9"><%= f.submit 'Submit', class: "btn btn-primary" %></div>
+              </div>
+            </div>
           </div>
-        </div>
-        </div>
-        <div class="form-group">
-          <div class="row">
-            <div class="col-3"><p style="font-variant: small-caps; font-size: 20px"><%= f.label :'Name:' %></p></div>
-            <div class="col-9"><%= f.text_field :name, class: "form-control" %></div>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="row">
-            <div class="col-3"><p style="font-variant: small-caps; font-size: 20px"><%= f.label :'Experience:' %></p></div>
-            <div class="col-9"><%= f.number_field :current_experience, class: "form-control", :disabled => true %></div>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="row">
-            <div class="col-3"><p style="font-variant: small-caps; font-size: 20px"><%= f.label :'Level:' %></p></div>
-            <div class="col-9"><%= f.number_field :level, class: "form-control" ,:disabled => true %></div>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="row">
-            <div class="col-3"><p style="font-variant: small-caps; font-size: 20px"><%= f.label :'Attack:' %></p></div>
-            <div class="col-9"><%= f.number_field :attack, class: "form-control" , step: 1, min: '1' %></div>
-          </div>
-        </div>
-      <div class="form-group">
-        <div class="row">
-          <div class="col-3"><p style="font-variant: small-caps; font-size: 20px"><%= f.label :'Defence:' %></p></div>
-          <div class="col-9"><%= f.number_field :defence, class: "form-control", step: 1, min: '1' %></div>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="row">
-          <div class="col-3"><p style="font-variant: small-caps; font-size: 20px"><%= f.label :'Speed:' %></p></div>
-          <div class="col-9"><%= f.number_field :speed, class: "form-control", step: 1, min: '1' %></div>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="row">
-          <div class="col-3"><p style="font-variant: small-caps; font-size: 20px"><%= f.label :'Health:' %></p></div>
-          <div class="col-9"><%= f.number_field:current_health_point, class: "form-control" , step: 1%></div>
-        </div>
-      </div>
-        <div class="form-group">
-          <div class="row">
-            <div class="col-3"><%= f.submit 'Submit', class: "btn btn-primary" %></div>
-        </div>
-      <% end %>
-    </div>
+        <% end %>
   </div>
 </div>
